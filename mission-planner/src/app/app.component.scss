@@ -20,13 +20,9 @@ html, body {
         margin: 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
-        .mdc-list-item__content {
+        .mdc-list-item__primary-text {
           color: inherit;
           transition: background-color 0.3s, color 0.3s;
-
-          .mdc-list-item__primary-text {
-            color: #ECEFF1;
-          }
 
           &:hover {
             background-color: #4B636E;

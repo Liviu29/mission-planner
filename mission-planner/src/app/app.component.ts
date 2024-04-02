@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,7 +24,8 @@ import { CommonModule } from '@angular/common';
         MatSidenav
     ],
     templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+    styleUrl: './app.component.scss',
+    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
     title = 'mission-planner';
