@@ -1,0 +1,52 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="pointForm">
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>X</mat-label>
+                    <input matInput type="number" formControlName="x">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Y</mat-label>
+                    <input matInput type="number" formControlName="y">
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" (click)="addPoint()">Add New Point</button>
+            </mat-card-content>
+        </form>
+
+        <ng-container *ngIf="points$ | async as points">
+            <mat-table [dataSource]="points">
+                <ng-container matColumnDef="position">
+                    <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+                    <mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="x">
+                    <mat-header-cell *matHeaderCellDef> X </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.x}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="y">
+                    <mat-header-cell *matHeaderCellDef> Y </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.y}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef=" ['position', 'name', 'x', 'y']"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: ['position', 'name', 'x', 'y'];"></mat-row>
+
+            </mat-table>
+        </ng-container>
+    </mat-card-content>
+</mat-card>

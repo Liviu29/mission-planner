@@ -1,0 +1,24 @@
+<ng-container *ngIf="points$ | async as points">
+    <div class="mission-list">
+        <mat-list>
+            <mat-list-item *ngFor="let point of points; let i = index">
+                <button mat-raised-button color="primary" (click)="selectPoint(point)">
+                    {{i + 1}}: {{ point.name.toUpperCase() }}: ({{ point.x }}, {{ point.y }})
+                </button>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+    <div class="robot-container">
+        <div class="visualization-area">
+            <svg #svg [attr.width]="svgWidth" [attr.height]="svgHeight" class="path-drawer"></svg>
+            <div #robot class="robot" [style.transform]="'translate(${point.x}px, ${point.y}px)'"></div>
+            <div *ngFor="let point of points" class="point-marker" [style.left.px]="point.x" [style.top.px]="point.y"></div>
+        </div>
+    </div>
+
+    <div class="container-buttons">
+        <button mat-raised-button color="primary" class="play" (click)="play()">Play</button>
+        <button mat-raised-button color="warn" class="stop" (click)="stop()">Stop</button>
+    </div>
+</ng-container>

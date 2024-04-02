@@ -1,0 +1,28 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened="true">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/home">Home</a>
+            <a mat-list-item routerLink="/planner">Planner</a>
+            <a mat-list-item routerLink="/player">Player</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <a routerLink="/home" class="toolbar-logo">
+                <img src="../assets/anybotics.png" alt="ANYbotics" style="height: 32px; margin-right: 16px;">
+            </a>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div class="title">Mission Planner</div>
+            <span class="spacer"></span>
+            <a href="https://github.com/Liviu29/mission-planner" target="_blank" rel="noopener">
+                <button mat-icon-button class="share" aria-label="icon-button with share icon">
+                    <mat-icon>share</mat-icon>
+                </button>
+            </a>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
