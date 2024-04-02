@@ -58,8 +58,8 @@ export class PlannerComponent {
     private initializeForm(): void {
         this.pointForm = this.fb.group({
             name: ['', Validators.required],
-            x: ['', [Validators.required, Validators.min(0), Validators.max(1000)]],
-            y: ['', [Validators.required, Validators.min(0), Validators.max(500)]]
+            x: ['', [Validators.required, Validators.min(60), Validators.max(1000)]],
+            y: ['', [Validators.required, Validators.min(60), Validators.max(500)]]
         });
     }
 

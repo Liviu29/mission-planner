@@ -9,11 +9,11 @@ export class PointService {
     public pointsSource = new BehaviorSubject<Point[]>([
         {
             name: 'start',
-            x: 100,
-            y: 100
+            x: 200,
+            y: 200
         },
         {
-            name: 'middle',
+            name: 'after-start',
             x: 500,
             y: 250
         },
