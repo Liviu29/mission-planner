@@ -28,5 +28,4 @@ import { CommonModule } from '@angular/common';
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-    title = 'mission-planner';
 }

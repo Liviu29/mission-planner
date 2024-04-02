@@ -1,24 +1,24 @@
 <ng-container *ngIf="points$ | async as points">
-    <div class="mission-list">
-        <mat-list>
+    <section class="mission-list">
+        <mat-nav-list>
             <mat-list-item *ngFor="let point of points; let i = index">
                 <button mat-raised-button color="primary" (click)="selectPoint(point)">
-                    {{i + 1}}: {{ point.name.toUpperCase() }}: ({{ point.x }}, {{ point.y }})
+                    {{ i + 1 }}: {{ point.name | uppercase }}: ({{ point.x }}, {{ point.y }})
                 </button>
             </mat-list-item>
-        </mat-list>
-    </div>
+        </mat-nav-list>
+    </section>
 
-    <div class="robot-container">
+    <section class="robot-container" aria-label="Mission visualization area">
         <div class="visualization-area">
             <svg #svg [attr.width]="svgWidth" [attr.height]="svgHeight" class="path-drawer"></svg>
             <div #robot class="robot" [style.transform]="'translate(${point.x}px, ${point.y}px)'"></div>
-            <div *ngFor="let point of points" class="point-marker" [style.left.px]="point.x" [style.top.px]="point.y"></div>
+            <div *ngFor="let point of points" class="point-marker" [style.left.px]="point.x" [style.top.px]="point.y" aria-hidden="true"></div>
         </div>
-    </div>
+    </section>
 
     <div class="container-buttons">
-        <button mat-raised-button color="primary" class="play" (click)="play()">Play</button>
-        <button mat-raised-button color="warn" class="stop" (click)="stop()">Stop</button>
+        <button mat-raised-button color="primary" class="play" (click)="play()" aria-label="Play mission">Play</button>
+        <button mat-raised-button color="warn" class="stop" (click)="stop()" aria-label="Stop mission">Stop</button>
     </div>
 </ng-container>

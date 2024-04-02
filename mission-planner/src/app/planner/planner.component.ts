@@ -47,25 +47,25 @@ import { Observable } from 'rxjs';
     styleUrl: './planner.component.scss'
 })
 export class PlannerComponent {
-    public pointForm: FormGroup;
-    public points$: Observable<Point[]>;
+    pointForm!: FormGroup;
+    points$: Observable<Point[]>;
 
-    constructor(
-        private fb: FormBuilder,
-        private pointService: PointService
-    ) {
+    constructor(private fb: FormBuilder, private pointService: PointService) {
+        this.initializeForm();
+        this.points$ = this.pointService.points$;
+    }
+
+    private initializeForm(): void {
         this.pointForm = this.fb.group({
             name: ['', Validators.required],
             x: ['', [Validators.required, Validators.min(0), Validators.max(1000)]],
             y: ['', [Validators.required, Validators.min(0), Validators.max(500)]]
         });
-
-        this.points$ = this.pointService.points$;
     }
 
     addPoint(): void {
         if (this.pointForm.valid) {
-            const newPoint: Point = this.pointForm.value;
+            const newPoint: Point = this.pointForm.getRawValue();
             this.pointService.addPoint(newPoint);
             this.pointForm.reset();
         }
